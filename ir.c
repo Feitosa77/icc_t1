@@ -4,8 +4,8 @@
 #define M(val) nextafter(val, DBL_MAX)
 
 void ir_init(IR *x, double val) {
-    x->a = m(val);
-    x->b = M(val);
+    x->a = nextafter(val, DBL_MIN);
+    x->b = nextafter(val, DBL_MAX);
 }
 
 void ir_sum(IR *z, IR x, IR y) { /* Z := X + Y */
