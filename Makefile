@@ -1,26 +1,25 @@
-#Makefile temporario...
+CC = gcc
+CFLAGS = -O3 -mavx -march=native -Wall
 
-CFLAGS = -Wall
+TARGET = ajustePol
 
 all: main.c ir.o linear.o elimination.o point.o fitting.o main.c
-	gcc main.c ir.o linear.o elimination.o point.o fitting.o $(CFLAGS) -lm
+	$(CC) $(CFLAGS) main.c -o $(TARGET) ir.o linear.o elimination.o point.o fitting.o -lm
 
 ir.o: ir.c ir.h
-	gcc -c ir.c $(CFLAGS)
+	$(CC) $(CFLAGS) -c ir.c
 
 linear.o: linear.c linear.h
-	gcc -c linear.c $(CFLAGS)
+	$(CC) $(CFLAGS) -c linear.c
 
 elimination.o: elimination.c elimination.h
-	gcc -c elimination.c $(CFLAGS)
+	$(CC) $(CFLAGS) -c elimination.c
 
 point.o: point.c point.h
-	gcc -c point.c $(CFLAGS)
+	$(CC) $(CFLAGS) -c point.c
 
 fitting.o: fitting.c fitting.h
-	gcc -c fitting.c $(CFLAGS)
+	$(CC) $(CFLAGS) -c fitting.c
 
 clean:
-	rm *.o
-purge: clean
-	rm -f a.out
+	rm -f *.o $(TARGET)
