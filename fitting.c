@@ -5,7 +5,7 @@
     m = quantidade de pontos
 */
 
-Vector least_squares(point_t **points, int order, int n_points) {
+Vector least_squares(Point **points, int order, int n_points) {
     int i, j, k;
 
     Matrix A = matrix_create(order, order);

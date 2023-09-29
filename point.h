@@ -10,15 +10,14 @@ struct point
     double y;
 };
 
-typedef struct point point_t;
+typedef struct point Point;
 
-void create_points(point_t ***points, unsigned int size);
+Point **create_points(unsigned int length);
 
-void print_points(point_t **points, unsigned int size);
+void print_points(Point **points, unsigned int length);
 
-void free_points(point_t ***points, unsigned int size);
+void free_points(Point **points, unsigned int length);
 
-void get_interval(point_t **points, unsigned int size, double *interval);
+void get_interval(Point **points, unsigned int length, double *interval);
 
 #endif
-

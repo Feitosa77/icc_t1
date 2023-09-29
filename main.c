@@ -3,24 +3,18 @@
 #include "fitting.h"
 
 int main() {
-    int order, n_points;
-    point_t **points;
+    unsigned int order, length;
 
-    scanf("%d", &order); /* Nao 'sei' usar scanf... */
-    scanf("%d", &n_points); /* Tmp */
+    scanf("%d", &order);
+    scanf("%d", &length);
 
-    create_points(&points, n_points);
-    
-    //printf("%d\n%d\n", order, n_points);
-    //print_points(points, n_points);
-
-    Vector coefficients = least_squares(points, order, n_points);
+    Point **points = create_points(length);
+    Vector coefficients = least_squares(points, order, length);
 
     vector_print(coefficients, order);
 
-    free_points(&points, n_points);
+    free_points(points, length);
     vector_destroy(coefficients);
     
-    return 0;
+    return EXIT_SUCCESS;
 }
-
