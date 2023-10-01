@@ -1,25 +1,25 @@
 CC = gcc
-CFLAGS = -O3 -mavx -march=native -Wall
+CFLAGS = -O3 -mavx -march=native -Wall -I libs
 
 TARGET = ajustePol
 
-all: main.c ir.o linear.o elimination.o point.o fitting.o main.c
-	$(CC) $(CFLAGS) main.c -o $(TARGET) ir.o linear.o elimination.o point.o fitting.o -lm
+all: src/main.c ir.o linear.o elimination.o point.o fitting.o
+	$(CC) $(CFLAGS) src/main.c -o bin/$(TARGET) ir.o linear.o elimination.o point.o fitting.o -lm
 
-ir.o: ir.c ir.h
-	$(CC) $(CFLAGS) -c ir.c
+ir.o: src/ir.c libs/ir.h
+	$(CC) $(CFLAGS) -c src/ir.c
 
-linear.o: linear.c linear.h
-	$(CC) $(CFLAGS) -c linear.c
+linear.o: src/linear.c libs/linear.h
+	$(CC) $(CFLAGS) -c src/linear.c
 
-elimination.o: elimination.c elimination.h
-	$(CC) $(CFLAGS) -c elimination.c
+elimination.o: src/elimination.c libs/elimination.h
+	$(CC) $(CFLAGS) -c src/elimination.c
 
-point.o: point.c point.h
-	$(CC) $(CFLAGS) -c point.c
+point.o: src/point.c libs/point.h
+	$(CC) $(CFLAGS) -c src/point.c
 
-fitting.o: fitting.c fitting.h
-	$(CC) $(CFLAGS) -c fitting.c
+fitting.o: src/fitting.c libs/fitting.h
+	$(CC) $(CFLAGS) -c src/fitting.c
 
 clean:
-	rm -f *.o $(TARGET)
+	rm -f *.o bin/$(TARGET)
