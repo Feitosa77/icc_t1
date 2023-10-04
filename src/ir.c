@@ -79,12 +79,12 @@ void ir_ipow(IR *z, IR x, int value) { /* Temporario */
 }
 
 void ir_print(IR x) {
-    float er = x.b-x.a;
+    //float er = x.b-x.a;
 
     /* le os bytes na memoria como long 64bits */
-    long ulp = *(long*)&x.b - *(long*)&x.a;
+    //long ulp = *(long*)&x.b - *(long*)&x.a;
 
-    printf("[%1.8e,%1.8e]\n", x.a, x.b);
-    printf("EA: %1.8e; ER: %1.8e; ULPS: %lu\n", er, er/x.a, ulp);
+    printf("[%1.8e,%1.8e] ", x.a, x.b);
+    //printf("EA: %1.8e; ER: %1.8e; ULPS: %lu\n", er, er/x.a, ulp);
 }
 

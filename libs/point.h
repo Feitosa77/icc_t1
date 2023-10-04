@@ -6,8 +6,8 @@
 
 struct point
 {
-    double x;
-    double y;
+    IR x;
+    IR y;
 };
 
 typedef struct point Point;

@@ -14,10 +14,6 @@
 
 void gaussian_elimination(Matrix A, Vector b, Vector x, int order);
 
-void gaussian_var(Matrix A, Vector b, Vector x, int order);
-
-void gaussian_alt(Matrix A, Vector b, Vector x, int order);
-
 /* Recebe um sistema linear Ax = b
     onde A eh uma matriz triangular superior
         calcula o valor de x por retro-substituicao
