@@ -21,8 +21,8 @@ void vector_destroy(Vector x) {
 
 void vector_print(Vector x, int order) {
     for (int i = 0; i < order; ++i)
-        printf(" %lf ", x[i]);
-    printf("\n\n");
+        printf("%lf ", x[i]);
+    printf("\n");
 }
 
 void vector_printf(Vector x, int order) {

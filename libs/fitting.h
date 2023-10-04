@@ -6,7 +6,6 @@
 #include "elimination.h"
 #include "point.h"
 
-Vector least_squares(Point **points, int order, int n_points);
+void least_squares(Point **points, Matrix A, Vector x, Vector b, int order, int n_points);
 
 #endif
-
