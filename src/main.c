@@ -9,6 +9,8 @@ int main() {
     scanf("%d", &length);
 
     Point **points = create_points(length);
+    print_points(points, length);
+
     Vector coefficients = least_squares(points, order, length);
 
     vector_print(coefficients, order);

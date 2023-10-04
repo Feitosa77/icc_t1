@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "ir.h"
+
 struct point
 {
     IR x;
@@ -33,13 +35,5 @@ void print_points(Point **points, unsigned int length);
  * @param length: The length of the points array.
  */
 void free_points(Point **points, unsigned int length);
-
-/*
- * @brief: Gets the interval of the given points.
- * @param points: The points to get the interval from.
- * @param length: The length of the points array.
- * @param interval: The interval of the points.
- */
-void get_interval(Point **points, unsigned int length, double *interval);
 
 #endif
