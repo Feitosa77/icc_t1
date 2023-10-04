@@ -18,23 +18,23 @@ Vector least_squares(Point **points, int order, int n_points) {
             A[i][j].a = 0.0; A[i][j].b = 0.0;
 
             for (k = 0; k < n_points; ++k) { /* A[][j] */
-              //ir_ipow(&aux, points[k]->x, i+j); /* point[k]->x := double, precisa ser IR */
+                ir_ipow(&aux, points[k]->x, i+j); /* point[k]->x := double, precisa ser IR */
                 ir_sum(&A[i][j], A[i][j], aux);
-
-                //A[i][j] += pow(points[k]->x, i+j);
             }
         }
 
         b[i].a = 0.0; b[i].b = 0.0;
         for (k = 0; k < n_points; ++k) {/* b[i] */
-            //ir_ipow(&aux, points[k]->x, i); 
-            //ir_mul(&aux, aux, points[k]->y); /*point[k]->y := ???, precisa ser int */
+            ir_ipow(&aux, points[k]->x, i); 
+            ir_mul(&aux, aux, points[k]->y); /*point[k]->y := ???, precisa ser int */
 
             ir_sum(&b[i], b[i], aux);
-
-            //b[i] += pow(points[k]->x, i) * points[k]->y; 
         }
     }
+
+    matrix_print_inf(A, order, order);
+
+    vector_print_inf(b, order);
 
     gaussian_elimination(A, x, b, order);
 

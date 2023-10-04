@@ -19,6 +19,10 @@ void vector_destroy(Vector x);
 
 void vector_print(Vector x, int order);
 
+void vector_print_inf(Vector x, int order);
+
+void vector_print_sup(Vector x, int order);
+
 /* Matrix */
 
 typedef IR** Matrix; /* v[l][k], l \in [0..i-1], k \in [0..j-1] */
@@ -28,6 +32,10 @@ Matrix matrix_create(int i, int j);
 void matrix_destroy(Matrix A, int i);
 
 void matrix_print(Matrix A, int i, int j);
+
+void matrix_print_inf(Matrix A, int i, int j);
+
+void matrix_print_sup(Matrix A, int i, int j);
 
 #endif
 

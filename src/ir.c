@@ -1,7 +1,7 @@
 #include "ir.h"
 
-#define m(val) nextafter(val, DBL_MIN)
-#define M(val) nextafter(val, DBL_MAX)
+#define m(val) val //nextafter(val, DBL_MIN)
+#define M(val) val //nextafter(val, DBL_MAX)
 
 void ir_init(IR *x, double val) {
     x->a = nextafter(val, DBL_MIN);
@@ -9,8 +9,8 @@ void ir_init(IR *x, double val) {
 }
 
 void ir_sum(IR *z, IR x, IR y) { /* Z := X + Y */
-    z->a += m(x.a + y.a);
-    z->b += M(x.b + y.b);
+    z->a = m(x.a + y.a);
+    z->b = M(x.b + y.b);
 }
 
 void ir_sub(IR *z, IR x, IR y) { /* Z := X - Y */
