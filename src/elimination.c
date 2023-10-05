@@ -43,38 +43,6 @@ void gaussian_elimination(Matrix A, Vector x, Vector b, int order) {
     back_substitution(A, x, b, order);
 }
 
-/* 2. Forma classica com pivoteamento, sem o calculo dos multiplicadores */
-
-void gaussian_elimination_var(Matrix A, Vector x, Vector b, int order) {
-    int i, j, k;
-    IR m, aux0, aux1;
-
-
-    for (i = 0; i < order; ++i) {       /* Colunas */
-        //pivot(A, b, order, i);
-
-        for (k = i+1; k < order; ++k) { /* Linhas */
-            m = A[k][i];
-
-            for (j = i; j < order; ++j) { /* Deslocamento A[k][j] */
-                ir_mul(&aux0, A[k][j], A[i][i]);
-                ir_mul(&aux1, A[i][j], m);
-
-                ir_sub(&A[k][j], aux0, aux1);
-            }
-
-            ir_mul(&aux0, b[k], A[i][i]);
-            ir_mul(&aux1, b[i], m);
-
-            ir_sub(&b[k], aux0, aux1);
-
-        }
-    }
-
-    back_substitution(A, x, b, order);
-}
-
-
 /* A is upper triangular */
 
 void back_substitution(Matrix A, Vector x, Vector b, int order) {
