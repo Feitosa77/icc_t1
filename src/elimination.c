@@ -23,22 +23,23 @@ void pivot(Matrix A, Vector b, int order, int p) {
 void gaussian_elimination(Matrix A, Vector x, Vector b, int order) {
     int i, j, k;
     IR m, aux;
-    
+
     for (i = 0; i < order; ++i) {         /* Colunas */
         //pivot(A, b, order, i);
 
         for (k = i+1; k < order; ++k) {   /* Linhas */
+
             ir_div(&m, A[k][i], A[i][i]);
+
 
             for (j = i; j < order; ++j) { /* Deslocamento A[k][j] */
                 ir_mul(&aux, A[i][j], m);
                 ir_sub(&A[k][j], A[k][j], aux);
             }
-
+            
             ir_mul(&aux, b[i], m);
             ir_sub(&b[k], b[k], aux);
         }
-
     }
 
     back_substitution(A, x, b, order);

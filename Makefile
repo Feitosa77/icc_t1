@@ -23,3 +23,6 @@ fitting.o: src/fitting.c libs/fitting.h
 
 clean:
 	rm -f *.o bin/$(TARGET)
+
+run: all
+	./bin/$(TARGET) < pontos.in

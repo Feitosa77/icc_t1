@@ -1,7 +1,10 @@
 #include "ir.h"
 
-#define m(val) val //nextafter(val, DBL_MIN)
-#define M(val) val //nextafter(val, DBL_MAX)
+//#define m(val) val 
+//#define M(val) val 
+
+#define m(val) nextafter(val, DBL_MIN)
+#define M(val) nextafter(val, DBL_MAX)
 
 void ir_init(IR *x, double val) {
     x->a = nextafter(val, DBL_MIN);
@@ -19,18 +22,18 @@ void ir_sub(IR *z, IR x, IR y) { /* Z := X - Y */
 }
 
 int cpmdouble(const void *d1, const void *d2) {
-    return (*(float*) d1 > *(float*) d2 ? 1 : -1); /*!!!*/ 
+    return (*(double*) d1 > *(double*) d2 ? 1 : -1); /*!!!*/ 
 }
 
 void ir_mul(IR *z, IR x, IR y) { /* Z := X * Y */
-    float aux[4];
+    double aux[4];
 
     aux[0] = x.a * y.a;
     aux[1] = x.a * y.b;
     aux[2] = x.b * y.a;
     aux[3] = x.b * y.b;
 
-    qsort(&aux, 4, sizeof (float), cpmdouble); /* Ineficiente */
+    qsort(&aux, 4, sizeof (double), cpmdouble); /* Ineficiente */
 
     z->a = m(aux[0]); 
     z->b = M(aux[3]);
