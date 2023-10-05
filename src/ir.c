@@ -1,10 +1,10 @@
 #include "ir.h"
 
-//#define m(val) val 
-//#define M(val) val 
+#define m(val) val 
+#define M(val) val 
 
-#define m(val) nextafter(val, DBL_MIN)
-#define M(val) nextafter(val, DBL_MAX)
+//#define m(val) nextafter(val, DBL_MIN)
+//#define M(val) nextafter(val, DBL_MAX)
 
 void ir_init(IR *x, double val) {
     x->a = nextafter(val, DBL_MIN);
@@ -40,7 +40,7 @@ void ir_mul(IR *z, IR x, IR y) { /* Z := X * Y */
 }
 
 void ir_div(IR *z, IR x, IR y) { /* Z := X / Y */
-    if (y.a > DBL_EPSILON || y.b > DBL_EPSILON) {
+    if (fabs(y.a) > DBL_EPSILON || fabs(y.b) > DBL_EPSILON) {
         y.a = m(1/y.a);
         y.b = M(1/y.b);
         ir_mul(z, x, y);

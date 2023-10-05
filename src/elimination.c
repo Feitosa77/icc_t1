@@ -25,12 +25,10 @@ void gaussian_elimination(Matrix A, Vector x, Vector b, int order) {
     IR m, aux;
 
     for (i = 0; i < order; ++i) {         /* Colunas */
-        //pivot(A, b, order, i);
+        pivot(A, b, order, i);
 
         for (k = i+1; k < order; ++k) {   /* Linhas */
-
             ir_div(&m, A[k][i], A[i][i]);
-
 
             for (j = i; j < order; ++j) { /* Deslocamento A[k][j] */
                 ir_mul(&aux, A[i][j], m);
