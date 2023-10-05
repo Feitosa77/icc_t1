@@ -2,14 +2,14 @@
 
 /* Pivoteamento */
 
-/*
 void pivot(Matrix A, Vector b, int order, int p) {
     int max = p;
-    double *m_aux = A[p];
-    double v_aux = b[p];
+    IR *m_aux = A[p];
+    IR v_aux = b[p];
 
     for (int i = p; i < order; ++i) // Encontra o maior coeficiente da coluna p //
-        if (fabs(A[i][p]) - fabs(A[max][p]) > DBL_EPSILON) // !!! //
+        //if (fabs(A[i][p].b) - fabs(A[max][p].b) > DBL_EPSILON) // !!! //
+        if (fabs(A[i][p].a) > fabs(A[max][p].a))  // !!! //
             max = i;
 
     A[p] = A[max];
@@ -18,19 +18,20 @@ void pivot(Matrix A, Vector b, int order, int p) {
     b[p] = b[max];
     b[max] = v_aux;
 }
-*/
 
 /* 1. Forma classica com pivoteamento */
 
 void gaussian_elimination(Matrix A, Vector x, Vector b, int order) {
     int i, j, k;
     IR m, aux;
-
+    
     for (i = 0; i < order; ++i) {         /* Colunas */
         //pivot(A, b, order, i);
 
         for (k = i+1; k < order; ++k) {   /* Linhas */
             ir_div(&m, A[k][i], A[i][i]);
+
+            vector_print_inf(&m, 1);
 
             for (j = i; j < order; ++j) { /* Deslocamento A[k][j] */
                 ir_mul(&aux, A[i][j], m);
@@ -40,7 +41,11 @@ void gaussian_elimination(Matrix A, Vector x, Vector b, int order) {
             ir_mul(&aux, b[i], m);
             ir_sub(&b[k], b[k], aux);
         }
+
     }
+
+    matrix_print_inf(A, order, order);
+    matrix_print_sup(A, order, order);
 
     back_substitution(A, x, b, order);
 }

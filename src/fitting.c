@@ -32,10 +32,6 @@ Vector least_squares(Point **points, int order, int n_points) {
         }
     }
 
-    matrix_print_inf(A, order, order);
-
-    vector_print_inf(b, order);
-
     gaussian_elimination(A, x, b, order);
 
     vector_destroy(b);
