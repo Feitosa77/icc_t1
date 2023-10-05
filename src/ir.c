@@ -9,8 +9,8 @@ void ir_init(IR *x, double val) {
 }
 
 void ir_sum(IR *z, IR x, IR y) { /* Z := X + Y */
-    z->a += m(x.a + y.a);
-    z->b += M(x.b + y.b);
+    z->a = m(x.a + y.a);
+    z->b = M(x.b + y.b);
 }
 
 void ir_sub(IR *z, IR x, IR y) { /* Z := X - Y */
