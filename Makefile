@@ -1,7 +1,10 @@
 CC = gcc
 CFLAGS = -O3 -mavx -march=native -Wall -I libs
 
+INPUT = pontos.in
+OUTPUT = resultado.out
 TARGET = bin/ajustePol
+
 OBJECTS = ir.o linear.o elimination.o point.o fitting.o utils.o
 
 LIKWID_C = -DLIKWID_PERFMON -I${LIKWID_INCLUDE}
@@ -14,7 +17,7 @@ all: src/main.c $(OBJECTS)
 	$(CC) $(CFLAGS) -c $<
 
 clean:
-	rm -f *.o $(TARGET)
+	rm -f *.o $(TARGET) $(OUTPUT)
 
 run: all
-	./$(TARGET) < pontos.in
+	./$(TARGET) < $(INPUT) > $(OUTPUT)
