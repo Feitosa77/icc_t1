@@ -3,7 +3,6 @@
 
 #include <float.h>
 #include <math.h>
-
 #include "linear.h"
 
 /*

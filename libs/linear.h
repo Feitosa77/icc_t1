@@ -4,7 +4,6 @@
 #include <stdlib.h> /* malloc, free, atof */
 #include <stdio.h>  /* printf */
 #include <string.h> /* strtok */
-
 #include "ir.h" /* IR */
 
 #define B_SIZE 1024

@@ -2,7 +2,6 @@
 #define FITTING_H
 
 #include <math.h>
-
 #include "point.h"
 #include "linear.h"
 #include "elimination.h"
