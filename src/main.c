@@ -10,11 +10,13 @@ int main()
     scanf("%d", &order);
     scanf("%d", &length);
 
+    order++;
+
     Point **points = create_points(length);
 
     Vector coefficients = least_squares_alt(points, order, length, &time);
 
-    vector_print_inf(coefficients, order);
+    vector_print(coefficients, order);
     printf("%lf\n%lf\n", time.generating, time.solving);
 
     vector_destroy(coefficients);
