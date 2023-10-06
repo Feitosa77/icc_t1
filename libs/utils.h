@@ -30,5 +30,11 @@ typedef double rtime_t;
 rtime_t timestamp(void);
 string_t markerName(string_t baseName, int n);
 
+struct time {
+    double generating, solving;
+};
+
+typedef struct time Time;
+
 #endif // __UTILS_H__
 
