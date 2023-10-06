@@ -4,7 +4,8 @@
 #include "fitting.h"
 #include "utils.h"
 
-int main() {
+int main()
+{
     unsigned int order, length;
     double generating_time, solving_time;
 
@@ -16,7 +17,7 @@ int main() {
     scanf("%d", &length);
 
     LIKWID_MARKER_INIT;
-    
+
     char MARKER_NAME_1[] = "MarkerGen";
 
     points = create_points(length);
@@ -49,6 +50,6 @@ int main() {
     matrix_destroy(A, order);
     vector_destroy(x);
     vector_destroy(b);
-    
+
     return EXIT_SUCCESS;
 }

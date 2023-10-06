@@ -29,7 +29,7 @@ void ir_mul(IR *z, IR x, IR y); /* Z := X * Y */
 
 void ir_div(IR *z, IR x, IR y); /* Z := X / Y */
 
-void ir_ipow(IR *z, IR x, int val); /* Z :+ X^P */
+void ir_ipow(IR *z, IR x, int val); /* Z := X^P */
 
 void ir_print(IR x);
 
