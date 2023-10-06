@@ -16,15 +16,15 @@ int main()
     scanf("%d", &order);
     scanf("%d", &length);
 
-    LIKWID_MARKER_INIT;
-
-    char MARKER_NAME_1[] = "MarkerGen";
-
     points = create_points(length);
 
     A = matrix_create(order, order);
     x = vector_create(order);
     b = vector_create(order);
+
+    LIKWID_MARKER_INIT;
+
+    char MARKER_NAME_1[] = "MarkerGen";
 
     LIKWID_MARKER_START(MARKER_NAME_1);
     generating_time = timestamp();
@@ -37,14 +37,14 @@ int main()
     LIKWID_MARKER_START(MARKER_NAME_2);
     solving_time = timestamp();
     gaussian_elimination(A, x, b, order);
+    back_substitution(A, x, b, order);
     solving_time = timestamp() - solving_time;
     LIKWID_MARKER_STOP(MARKER_NAME_2);
 
     LIKWID_MARKER_CLOSE;
 
     vector_print(x, order);
-    printf("%lf\n", generating_time);
-    printf("%lf\n", solving_time);
+    printf("%lf\n%lf\n", generating_time, solving_time);
 
     free_points(points, length);
     matrix_destroy(A, order);

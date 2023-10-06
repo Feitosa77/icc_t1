@@ -44,8 +44,6 @@ void gaussian_elimination(Matrix A, Vector x, Vector b, int order)
             ir_sub(&b[k], b[k], aux);
         }
     }
-
-    back_substitution(A, x, b, order);
 }
 
 /* A is upper triangular */
