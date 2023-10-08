@@ -1,0 +1,28 @@
+Trabalho 1 - Ajuste de Curvas
+
+Membros:
+- Edison Luiz Matias Junior	(GRR20211790)
+- Matheus de Souza Feitosa	(GRR20211795)
+
+Estrutura de Projeto:
+
+1. Diretorios:
+	a. /bin			Contem o arquivo executavel;
+	b. /docs		Contem a documentacao do trabalho;
+	c. /libs		Contem as bibliotecas e estruturas de dados utilizadas;
+	d. /src			Contem a implementacao das biblotecas.
+
+2. Arquivos:
+	a. elimination.c	Contem a implementacao da Metodo de Eliminacao de Gauss;
+	b. fitting.c		Contem a implementacao do Metodo de Minimos Quadrados;
+	c. ir.c			Contem a implementacao da Representacao Intervalar;
+	d. linear.c		Contem a implementacao de Vetores e Matrizes;
+	e. point.c		Contem a implementacao de pontos;
+	f. run.sh		Contem a execucao do binario usando LIKWID.
+	g. Makefile
+
+Estrutura de Dados:
+	1. IR {double a, b}	Representacao Intervalar
+	2. Point {IR *x, *y}	Coordenada de pontos de Representacao Intervalar
+	3. Vetor *IR		Vetor de Representacao Intervalar de tamanho N
+	4. Matrix **IR		Matriz de Representacao Intervalar de ordem N
