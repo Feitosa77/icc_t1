@@ -17,10 +17,10 @@ int main()
     Vector coefficients = least_squares_alt(points, order, length, &time);
 
     vector_print(coefficients, order);
-    printf("%lf\n%lf\n", time.generating, time.solving);
 
     IR r, aux;
-    
+    Vector results = vector_create(length);
+
     for (int i = 0; i < length; ++i) {
         r.a = 0.0; r.b = 0.0;
 
@@ -32,12 +32,15 @@ int main()
 
         ir_sub(&r, points[i]->y, r);
 
-        vector_print(&r, 1);
+        results[i] = r;
     }
 
+    vector_print(results, length);
+    printf("%.8e\n%.8e\n", time.generating, time.solving);
 
     free_points(points, length);
     vector_destroy(coefficients);
+    vector_destroy(results);
 
     return EXIT_SUCCESS;
 }
